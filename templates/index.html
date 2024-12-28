@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstration of ChatGPT API in a Python Flask Application. A Skolo Online course.">
+
+  <title>{% block title %}Health Care{% endblock %}</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/iba_logo.png') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+        /* Google Fonts Link */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    * {
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
+
+    nav {
+      background: #0082e6;
+      height: 80px;
+      width: 100%;
+    }
+
+    label.logo {
+      color: white;
+      font-size: 25px;
+      line-height: 80px;
+      padding: 0 100px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      float: right;
+      margin-right: 20px;
+    }
+
+    nav ul li {
+      display: inline-block;
+      line-height: 80px;
+      margin: 0 5px;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: 17px;
+      padding: 7px 13px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    a.active,
+    a:hover {
+      background: #1b9bff;
+      transition: .5s;
+    }
+
+    .checkbtn {
+      font-size: 22px;
+      color: white;
+      float: right;
+      line-height: 80px;
+      margin-right: 30px;
+      cursor: pointer;
+      display: none;
+    }
+
+    #check {
+      display: none;
+    }
+
+    @media (max-width: 1050px) {
+      label.logo {
+        padding-left: 30px;
+      }
+
+      nav ul li a {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 890px) {
+      .checkbtn {
+        display: block;
+      }
+
+      label.logo {
+        font-size: 22px;
+      }
+
+      ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+      }
+
+      nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+      }
+
+      nav ul li a {
+        font-size: 20px;
+      }
+
+      a:hover,
+      a.active {
+        background: none;
+        color: #0082e6;
+      }
+
+      #check:checked~ul {
+        left: 0;
+      }
+    }
+
+    section {
+      background: url("bg.jpg") no-repeat;
+      background-size: cover;
+      height: calc(100vh - 80px);
+    }
+
+    .chat-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: transparent;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .chatbox {
+      position: fixed;
+      bottom: 0;
+      right: 20px;
+      width: 400px; /* Increased width */
+      height: 500px; /* Increased height */
+      max-width: 90%;
+      background-color: grey;
+      border-radius: 10px 10px 0 0;
+      border-color: #140b9d;
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .chatbox-header {
+      background-color: #140b9d;
+      padding: 15px;
+      border-radius: 10px 10px 0 0;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chatbox-body {
+      padding: 10px;
+      height: calc(100% - 130px);
+      overflow-y: auto;
+    }
+
+    .chatbox-footer {
+      display: flex;
+      padding: 10px;
+    }
+
+    .chatbox-footer input {
+      flex-grow: 1;
+      background-color: #3A4556;
+      border: none;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .chatbox-footer button {
+      background-color: #140b9d;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+
+    .close-chat {
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">HealthAI</label>
+    <ul>
+      <li><a class="active" href="{{ url_for('home1') }}">Home</a></li>
+      <li><a class="active" href="{{ url_for('streamlit_redirect') }}">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Feedback</a></li>
+    </ul>
+  </nav>
+  <div class="chat-icon">
+    <img src="{{ url_for('static', filename='images/iba_logo.png') }}" alt="Chat Icon" width="40" height="40">
+  </div>
+
+  <div class="chatbox">
+    <div class="chatbox-header">
+      <span>Gemini AI Chatbot</span>
+      <span class="close-chat">X</span>
+    </div>
+    <div class="chatbox-body">
+      <div id="list-group" class="list-group w-auto">
+        <!-- Chat messages will be appended here -->
+      </div>
+    </div>
+    <div class="chatbox-footer">
+      <input type="text" class="form-control" id="chat-input" placeholder="Type a message...">
+      <button id="gpt-button" class="btn">Send</button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  <script>
+    // Toggle chatbox visibility
+    $('.chat-icon').click(function () {
+      $('.chatbox').toggle();
+    });
+
+    // Close chatbox
+    $('.close-chat').click(function () {
+      $('.chatbox').hide();
+    });
+
+    // Function to send message
+    function sendMessage() {
+      var question = $("#chat-input").val();
+      if (!question.trim()) return; // Ignore empty input
+      let html_data = `
+        <a style="margin-top:-10px; background-color:#3A4556; border:none; color:white;"
+          class="list-group-item list-group-item-action d-flex gap-3 py-3">
+          <img src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+            alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <p class="mb-0 opacity-75">${question}</p>
+            </div>
+          </div>
+        </a>
+        <div id="response"></div>`;
+      $("#chat-input").val("");
+
+      $("#list-group").append(html_data);
+      $.ajax({
+        type: "POST",
+        url: "/",
+        data: { 'prompt': question },
+        success: function (data) {
+          let gpt_data = `
+            <a style="background-color:#202835; border:black;" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+              <img src="{{ url_for('static', filename='images/iba_logo.png') }}" alt="twbs" width="32" height="32"
+                class="rounded-circle flex-shrink-0">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p>${data}</p>
+                </div>
+              </div>
+            </a><br>`;
+          $("#list-group").append(gpt_data);
+        }
+      });
+    }
+
+    // Send message on Enter key press
+    $('#chat-input').on('keypress', function (e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // Send message on button click
+    $("#gpt-button").click(function () {
+      sendMessage();
+    });
+  </script>
+  <div class="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+
+</html>

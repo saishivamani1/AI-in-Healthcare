@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="stero.css" /> -->
+     <style>
+      
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --primary-color: rgb(23, 87, 207);
+    --primary-color-dark: #0d846c;
+    --primary-color-light: #e9f7f7;
+    --secondary-color: #fb923c;
+    --text-dark: #333333;
+    --text-light: #767268;
+    --white: #ffffff;
+    --max-width: 1200px;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .section__container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+  }
+  
+  .section__header {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  
+  .btn {
+    padding: 0.75rem 2rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    white-space: nowrap;
+    color: var(--white);
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  img {
+    width: 100%;
+    display: flex;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  html,
+  body {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  header {
+    background-image: linear-gradient(
+        to right,
+        rgba(18, 85, 172, 0.9),
+        rgba(18, 172, 142, 0.7)
+      ),
+      url("assets/header.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .nav__container {
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .nav__logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+  
+  .nav__logo span {
+    color: var(--secondary-color);
+  }
+  
+  .nav__links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+
+  
+  
+  .link a {
+    padding: 0.5rem;
+    color: var(--primary-color-light);
+  }
+  
+  .link a:hover {
+    color: #fb923c;
+  }
+  
+  .header__container {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+  }
+  
+  .header__container h1 {
+    margin-bottom: 1rem;
+    max-width: 800px;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    color: var(--white);
+  }
+  
+  .header__container p {
+    margin-bottom: 2rem;
+    max-width: 600px;
+    color: var(--primary-color-light);
+  }
+  
+  .header__form {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .header__form form {
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header__form input {
+    padding: 1rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
+    border-radius: 5px;
+  }
+  
+  .header__form input::placeholder {
+    color: var(--primary-color);
+  }
+  
+  .form__btn {
+    background-color: var(--primary-color);
+    transition: 0.3s;
+  }
+  
+  .form__btn:hover {
+    background-color: var(--primary-color-dark);
+  }
+  
+  .header__form h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  
+  .service__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .service__header__content p {
+    max-width: 600px;
+    color: var(--text-light);
+  }
+  
+  .service__btn {
+    padding: 0.75rem 1rem;
+    outline: none;
+    font-size: 1rem;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    border-radius: 5px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .service__btn:hover {
+    color: var(--white);
+    background-color: var(--primary-color);
+  }
+  
+  .service__grid {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .service__card {
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .service__card span {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 10px 20px;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
+    border-radius: 100%;
+    transition: 0.3s;
+  }
+  
+  .service__card h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  
+  .service__card p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+  
+  .service__card a {
+    color: var(--primary-color);
+  }
+  
+  .service__card a:hover {
+    color: var(--primary-color-dark);
+  }
+  
+  .service__card:hover span {
+    color: var(--primary-color-light);
+    background-color: var(--primary-color);
+  }
+  
+  .about__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .about__content p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+  
+  .about__image img {
+    max-width: 400px;
+    margin: auto;
+    border-radius: 10px;
+  }
+  
+  .why__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .why__image img {
+    max-width: 400px;
+    margin: auto;
+    border-radius: 10px;
+  }
+  
+  .why__content p {
+    color: var(--text-light);
+  }
+  
+  .why__grid {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 80px auto;
+    gap: 2rem;
+  }
+  
+  .why__grid span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .why__grid h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  
+  .why__grid p {
+    color: var(--text-light);
+  }
+  
+  .doctors__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .doctors__header__content p {
+    max-width: 600px;
+    color: var(--text-light);
+  }
+  
+  .doctors__nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .doctors__nav span {
+    padding: 5px 15px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+  }
+  
+  .doctors__grid {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .doctors__card {
+    text-align: center;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .doctors__card__image {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .doctors__socials {
+    position: absolute;
+    left: 0;
+    bottom: -4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: 0.5s;
+  }
+  
+  .doctors__socials span {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    background-color: var(--white);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .doctors__socials span:hover {
+    color: var(--primary-color);
+  }
+  
+  .doctors__card:hover .doctors__socials {
+    bottom: 2rem;
+  }
+  
+  .doctors__card h4 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  
+  .doctors__card p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+  
+  .footer {
+    background-color: var(--primary-color-light);
+  }
+  
+  .footer__container {
+    display: grid;
+    grid-template-columns: 400px repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .footer__col h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  .footer__col h3 span {
+    color: var(--secondary-color);
+  }
+  
+  .footer__col h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  .footer__col p {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .footer__col p:hover {
+    color: var(--primary-color);
+  }
+  
+  .footer__col i {
+    color: var(--primary-color);
+  }
+  
+  .footer__bar {
+    background-color: var(--primary-color);
+  }
+  
+  .footer__bar__content {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .footer__bar__content p {
+    font-size: 0.8rem;
+    color: var(--white);
+  }
+  
+  .footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--white);
+    cursor: pointer;
+  }
+  
+  @media (width < 900px) {
+    .service__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  
+    .about__container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .about__image {
+      grid-area: 1/1/2/2;
+    }
+  
+    .about__content {
+      text-align: center;
+    }
+  
+    .why__container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .why__content {
+      text-align: center;
+    }
+  
+    .why__grid {
+      text-align: left;
+    }
+  
+    .doctors__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  
+    .footer__container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (width < 780px) {
+    .nav__links {
+      display: none;
+    }
+  
+    .header__container {
+      flex-direction: column;
+    }
+  }
+  
+  @media (width < 600px) {
+    .service__header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .service__grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .why__grid {
+      column-gap: 1rem;
+    }
+  
+    .doctors__header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .doctors__grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .footer__bar__content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+  }
+  .chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .chatbox {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 400px; /* Increased width */
+    height: 500px; /* Increased height */
+    max-width: 90%;
+    background-color: grey;
+    border-radius: 10px 10px 0 0;
+    border-color: #64a4a3;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+  }
+
+  .chatbox-header {
+    background-color:#64a4a3;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chatbox-body {
+    padding: 10px;
+    height: calc(100% - 130px);
+    overflow-y: auto;
+  }
+
+  .chatbox-footer {
+    display: flex;
+    padding: 10px;
+  }
+
+  .chatbox-footer input {
+    flex-grow: 1;
+    background-color: #3A4556;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .chatbox-footer button {
+    background-color: #64a4a3;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+
+  .close-chat {
+    cursor: pointer;
+  }
+     </style>
+    <title>Web Design Mastery | HealthCare</title>
+  </head>
+  <body>
+    <header>
+      <nav class="section__container nav__container">
+        <div class="nav__logo">
+            <img src="" alt="">
+        </div>
+        <ul class="nav__links">
+         <li class="link"><a href="#home">Home</a></li>
+         <li class="link"><a href="{{ url_for('streamlit_redirect') }}" target="_blank">Report Analysis</a></li>
+          <li class="link"><a href="{{ url_for('streamlit_redirect2') }}" target="_blank">Previous Data</a></li>
+          <li class="link"><a href="{{ url_for('streamlit_redirect3') }}" target="_blank">ND</a></li>
+          <li class="link"><a href="#pages"></a></li>
+        </ul>
+        <button class="btn">Contact Us</button>
+      </nav>
+      <div class="section__container header__container" id="home">
+        <div class="header__content">
+          <h1>Providing an Exceptional Patient Experience</h1>
+          <p>
+            Welcome, where exceptional patient experiences are our priority.
+            With compassionate care, state-of-the-art facilities, and a
+            patient-centered approach, we're dedicated to your well-being. Trust
+            us with your health and experience the difference.
+          </p>
+          <button class="btn">See Services</button>
+        </div>
+        <div class="header__form">
+          
+        </div>
+      </div>
+    </header>
+
+    <section class="section__container service__container" id="service">
+      <div class="service__header">
+        <div class="service__header__content">
+          <h2 class="section__header">Our Special service</h2>
+          <p>
+            Beyond simply providing medical care, our commitment lies in
+            delivering unparalleled service tailored to your unique needs.
+          </p>
+        </div>
+        <button class="service__btn">Ask A Service</button>
+      </div>
+      <div class="service__grid">
+        <div class="service__card">
+          <span><i class="ri-microscope-line"></i></span>
+          <h4>Laboratory Test</h4>
+          <p>
+            Accurate Diagnostics, Swift Results: Experience top-notch Laboratory
+            Testing at our facility.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+        <div class="service__card">
+          <span><i class="ri-mental-health-line"></i></span>
+          <h4>Health Check</h4>
+          <p>
+            Our thorough assessments and expert evaluations help you stay
+            proactive about your health.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+        <div class="service__card">
+          <span><i class="ri-hospital-line"></i></span>
+          <h4>General Dentistry</h4>
+          <p>
+            Experience comprehensive oral care with Dentistry. Trust us to keep
+            your smile healthy and bright.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+      </div>
+    </section>
+    <section class="section__container about__container" id="about">
+      <div class="about__content">
+        <h2 class="section__header">About Us</h2>
+        <p>
+          Welcome to our healthcare website, your one-stop destination for
+          reliable and comprehensive health care information. We are committed
+          to promoting wellness and providing valuable resources to empower you
+          on your health journey.
+        </p>
+        <p>
+          Explore our extensive collection of expertly written articles and
+          guides covering a wide range of health topics. From understanding
+          common medical conditions to tips for maintaining a healthy lifestyle,
+          our content is designed to educate, inspire, and support you in making
+          informed choices for your health.
+        </p>
+        <p>
+          Discover practical health tips and lifestyle advice to optimize your
+          physical and mental well-being. We believe that small changes can lead
+          to significant improvements in your quality of life, and we're here to
+          guide you on your path to a healthier and happier you.
+        </p>
+      </div>
+      <div class="about__image">
+        <img src="about.jpg" alt="about" />
+      </div>
+    </section>
+
+    <section class="section__container why__container" id="blog">
+      <div class="why__image">
+        <img src="choose-us.jpg" alt="why choose us" />
+      </div>
+      <div class="why__content">
+        <h2 class="section__header">Why Choose Us</h2>
+        <p>
+          With a steadfast commitment to your well-being, our team of highly
+          trained healthcare professionals ensures that you receive nothing
+          short of exceptional patient experiences.
+        </p>
+        <div class="why__grid">
+          <span><i class="ri-hand-heart-line"></i></span>
+          <div>
+            <h4>Intensive Care</h4>
+            <p>
+              Our Intensive Care Unit is equipped with advanced technology and
+              staffed by team of professionals
+            </p>
+          </div>
+          <span><i class="ri-truck-line"></i></span>
+          <div>
+            <h4>Free Ambulance Car</h4>
+            <p>
+              A compassionate initiative to prioritize your health and
+              well-being without any financial burden.
+            </p>
+          </div>
+          <span><i class="ri-hospital-line"></i></span>
+          <div>
+            <h4>Medical and Surgical</h4>
+            <p>
+              Our Medical and Surgical services offer advanced healthcare
+              solutions to address medical needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container doctors__container" id="pages">
+      <div class="doctors__header">
+        <div class="doctors__header__content">
+          <h2 class="section__header">Our Special Doctors</h2>
+          <p>
+            We take pride in our exceptional team of doctors, each a specialist
+            in their respective fields.
+          </p>
+        </div>
+        <div class="doctors__nav">
+          <span><i class="ri-arrow-left-line"></i></span>
+          <span><i class="ri-arrow-right-line"></i></span>
+        </div>
+      </div>
+      <div class="doctors__grid">
+        <div class="doctors__card">
+          <div class="doctors__card__image">
+            <img src="assets/doctor-1.jpg" alt="doctor" />
+            <div class="doctors__socials">
+              <span><i class="ri-instagram-line"></i></span>
+              <span><i class="ri-facebook-fill"></i></span>
+              <span><i class="ri-heart-fill"></i></span>
+              <span><i class="ri-twitter-fill"></i></span>
+            </div>
+          </div>
+          <h4>Dr. Emily Smith</h4>
+          <p>Cardiologist</p>
+        </div>
+        <div class="doctors__card">
+          <div class="doctors__card__image">
+            <img src="assets/doctor-2.jpg" alt="doctor" />
+            <div class="doctors__socials">
+              <span><i class="ri-instagram-line"></i></span>
+              <span><i class="ri-facebook-fill"></i></span>
+              <span><i class="ri-heart-fill"></i></span>
+              <span><i class="ri-twitter-fill"></i></span>
+            </div>
+          </div>
+          <h4>Dr. James Anderson</h4>
+          <p>Neurosurgeon</p>
+        </div>
+        <div class="doctors__card">
+          <div class="doctors__card__image">
+            <img src="assets/doctor-3.jpg" alt="doctor" />
+            <div class="doctors__socials">
+              <span><i class="ri-instagram-line"></i></span>
+              <span><i class="ri-facebook-fill"></i></span>
+              <span><i class="ri-heart-fill"></i></span>
+              <span><i class="ri-twitter-fill"></i></span>
+            </div>
+          </div>
+          <h4>Dr. Michael Lee</h4>
+          <p>Dermatologist</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <h3>Health<span>Care</span></h3>
+          <p>
+            We are honored to be a part of your healthcare journey and committed
+            to delivering compassionate, personalized, and top-notch care every
+            step of the way.
+          </p>
+          <p>
+            Trust us with your health, and let us work together to achieve the
+            best possible outcomes for you and your loved ones.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>About Us</h4>
+          <p>Home</p>
+          <p>About Us</p>
+          <p>Work With Us</p>
+          <p>Our Blog</p>
+          <p>Terms & Conditions</p>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <p>Search Terms</p>
+          <p>Advance Search</p>
+          <p>Privacy Policy</p>
+          <p>Suppliers</p>
+          <p>Our Stores</p>
+        </div>
+        <div class="footer__col">
+          <h4>Contact Us</h4>
+          <p>
+            <i class="ri-map-pin-2-fill"></i> 123, London Bridge Street, London
+          </p>
+          <p><i class="ri-mail-fill"></i> support@care.com</p>
+          <p><i class="ri-phone-fill"></i> (+012) 3456 789</p>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <div class="footer__bar__content">
+          <p>Copyright © 2023 Web Design Mastery. All rights reserved.</p>
+          <div class="footer__socials">
+            <span><i class="ri-instagram-line"></i></span>
+            <span><i class="ri-facebook-fill"></i></span>
+            <span><i class="ri-heart-fill"></i></span>
+            <span><i class="ri-twitter-fill"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="chat-icon">
+        <img src="hui.png" alt="Chat Icon" width="40" height="40">
+      </div>
+    
+      <div class="chatbox">
+        <div class="chatbox-header">
+          <span>Health AI</span>
+          <span class="close-chat">X</span>
+        </div>
+        <div class="chatbox-body">
+          <div id="list-group" class="list-group w-auto">
+            <!-- Chat messages will be appended here -->
+          </div>
+        </div>
+        <div class="chatbox-footer">
+          <input type="text" class="form-control" id="chat-input" placeholder="Type a message...">
+          <button id="gpt-button" class="btn">Send</button>
+        </div>
+      </div>
+    
+      <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+      <script>
+        // Toggle chatbox visibility
+        $('.chat-icon').click(function () {
+          $('.chatbox').toggle();
+        });
+    
+        // Close chatbox
+        $('.close-chat').click(function () {
+          $('.chatbox').hide();
+        });
+    
+        // Function to send message
+        function sendMessage() {
+          var question = $("#chat-input").val();
+          if (!question.trim()) return; // Ignore empty input
+          let html_data = `
+            <a style="margin-top:-10px; background-color:#3A4556; border:none; color:white;"
+              class="list-group-item list-group-item-action d-flex gap-3 py-3">
+              
+                
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p class="mb-0 opacity-75">${question}</p>
+                </div>
+              </div>
+            </a>
+            <div id="response"></div>`;
+          $("#chat-input").val("");
+    
+          $("#list-group").append(html_data);
+          $.ajax({
+            type: "POST",
+            url: "/",
+            data: { 'prompt': question },
+            success: function (data) {
+              let gpt_data = `
+               
+                  
+                  <div class="d-flex gap-2 w-100 justify-content-between">
+                    <div>
+                      <p>${data}</p>
+                    </div>
+                  </div>
+                </a><br>`;
+              $("#list-group").append(gpt_data);
+            }
+          });
+        }
+    
+        // Send message on Enter key press
+        $('#chat-input').on('keypress', function (e) {
+          if (e.key === 'Enter') {
+            sendMessage();
+          }
+        });
+    
+        // Send message on button click
+        $("#gpt-button").click(function () {
+          sendMessage();
+        });
+      </script>
+    </footer>
+  </body>
+</html>
